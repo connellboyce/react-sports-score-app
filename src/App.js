@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import ScorePanel from "./scorePanel";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+  const [teams, setTeams] = useState([
+    { name: "Eagles", color: "dark-green", textcolor: "white", logo: "./images/eagles.png" },
+    { name: "Flyers", color: "orange", textcolor: "black", logo: "./images/flyers.png" },
+    { name: "76ers", color: "blue", textcolor: "white", logo: "./images/sixers.png "},
+    { name: "Phillies", color: "red", textcolor: "white", logo: "./images/phillies.png" },
+    { name: "Union", color: "navy", textcolor: "white", logo: "./images/union.png" }
+  ]);
+
+  return( 
+    <div className="app">
+      <h1>Philadelphia Sport Score Central</h1>
+      <br></br>
+      <div className="scoreboard">
+        {teams.map(team => (
+          <ScorePanel name={team.name} logo={team.logo}/>
+        ))};
+      </div>
     </div>
   );
 }
